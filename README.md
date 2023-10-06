@@ -1,5 +1,5 @@
 CPSC 362 Final Project
-Names: Trung Nguyen,
+Names: Trung Nguyen, Evan Ng
 
 # Getting Started with Create React App
 
