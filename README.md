@@ -29,9 +29,9 @@ Topic Selection Report(1-2 pages):
 
 # Other Due Dates
 
-P2: First Group Project Progress Report **10/22/23**
-P3: Second Group Project Progress Report **11/5/23**
-P4: Third Group Project Progress Report **11/19/23**
+- P2: First Group Project Progress Report **10/22/23**
+- P3: Second Group Project Progress Report **11/5/23**
+- P4: Third Group Project Progress Report **11/19/23**
 
 
 # Getting Started with Create React App
