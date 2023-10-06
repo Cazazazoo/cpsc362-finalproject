@@ -14,11 +14,11 @@ Names: Trung Nguyen, Evan Ng, Connie Zhu, Nick Sabater
 
 ## Slides
 
-Slides(can include): Introduction, Group Members, Table of contents, Problem statement, Objective, Product Features, Product Backlog, Sprint Backlog, User Stories, User Interface, Software Requirements, Tasks Performed, Functional & Non-Functional Requirements, Goals, Scrum Meeting screenshots, Challenges Faced, Conclusion, Future Work
+**Slides(can include):** Introduction, Group Members, Table of contents, Problem statement, Objective, Product Features, Product Backlog, Sprint Backlog, User Stories, User Interface, Software Requirements, Tasks Performed, Functional & Non-Functional Requirements, Goals, Scrum Meeting screenshots, Challenges Faced, Conclusion, Future Work
 
 # P1: Group Project Topic Selection Report 10/08/23
 
-Topic Selection Report(1-2 pages):
+**Topic Selection Report(1-2 pages):**
 - Team Name
 - Name of the Software
 - Why did the team decide on this topic
