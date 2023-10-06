@@ -1,5 +1,5 @@
 CPSC 362 Final Project
-Names: Trung Nguyen, Evan Ng, Connie Zhu
+Names: Trung Nguyen, Evan Ng, Connie Zhu, Nick Sabater
 
 # P5: Final Project Submission 11/28/23
 
