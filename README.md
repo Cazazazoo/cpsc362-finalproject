@@ -1,5 +1,38 @@
 CPSC 362 Final Project
-Names: Trung Nguyen, Evan Ng
+Names: Trung Nguyen, Evan Ng, Connie Zhu, Nick Sabater
+
+# P5: Final Project Submission 11/28/23
+
+1. Activity Diagram - 5 marks
+2. Use Case Diagram - 5 marks
+3. CRC Diagrams - 5 marks
+4. Source Code in a zip file(can also share code using GitHub link) - 5 marks
+5. Read me file (text file) - Tech Stack used, any prerequisites to run the application
+6. Executable file
+7. Final presentation PPT file(10-15 slides) - 20 marks
+8. Test Cases - 10 marks
+
+## Slides
+
+**Slides(can include):** Introduction, Group Members, Table of contents, Problem statement, Objective, Product Features, Product Backlog, Sprint Backlog, User Stories, User Interface, Software Requirements, Tasks Performed, Functional & Non-Functional Requirements, Goals, Scrum Meeting screenshots, Challenges Faced, Conclusion, Future Work
+
+# P1: Group Project Topic Selection Report 10/08/23
+
+**Topic Selection Report(1-2 pages):**
+- Team Name
+- Name of the Software
+- Why did the team decide on this topic
+- Short description of the software
+- Technology Stack(if decided)
+- List of Group Members with CWID and emails
+- Roles of the team members
+
+# Other Due Dates
+
+- P2: First Group Project Progress Report **10/22/23**
+- P3: Second Group Project Progress Report **11/5/23**
+- P4: Third Group Project Progress Report **11/19/23**
+
 
 # Getting Started with Create React App
 
