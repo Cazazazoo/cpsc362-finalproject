@@ -1,28 +1,53 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+
 function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState(''); // State for the message
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
+    // You can add your login logic here
+    if (username === 'yourUsername' && password === 'yourPassword') {
+      setMessage('Login successful');
+    } else {
+      setMessage('Login failed');
+    }
+  };
+  
   return (
     <div className="App">
       <header className="App-header">
         <div className = "top-bar">
-          <button className ="login-button">Login</button>
+          <div className="login-inputs">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button className="login-button" onClick={handleLogin}>
+            Login
+          </button>
+          <div className="small-text">{message}</div> {/* Display the message */}
+         
         </div>
-        <p>
-          OnlyPolls
-        </p>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
