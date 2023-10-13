@@ -5,6 +5,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className = "top-bar">
+          <button className ="login-button">Login</button>
+        </div>
         <p>
           OnlyPolls
         </p>

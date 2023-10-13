@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #333; /* Optional background color */
+}
+.login-button {
+  background-color: #0074cc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
