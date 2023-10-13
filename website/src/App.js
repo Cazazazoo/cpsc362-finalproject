@@ -14,11 +14,15 @@ function App() {
           <a href="/Signup">Sign up</a>
           <a href="/Contact">Contact</a>
         </header>
-
+      
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/Signup" element={<Signup/>} />
         </Routes>
+        <div className="home-container">
+          <h1>Welcome to the Base Page</h1>
+          <p>This is the base page content. You can add your content here.</p>
+        </div>
       </div>
     </BrowserRouter>
   );
