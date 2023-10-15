@@ -1,11 +1,11 @@
 .App {
   text-align: center;
-  background-color: #282424;
+  background-color: #3e3b3b;
 }
 
 
 .App-header a{
-  background-color: #282424;
+  background-color: #3e3b3b;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   color: rgb(228, 227, 233);
@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgb(33, 33, 36); /* Change the background color to your preferred color */
+  background-color:#282424; /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
 
@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgb(33, 33, 36); /* Change the background color to your preferred color */
+  background-color: #282424; /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
 .signup-container{
@@ -37,7 +37,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgb(33, 33, 36); /* Change the background color to your preferred color */
+  background-color:#282424; /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
 
