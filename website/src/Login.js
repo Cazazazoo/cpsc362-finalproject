@@ -43,6 +43,7 @@ function Login() {
             type='text'
             value={username}
             onChange={handleUsernameChange}
+            style={{ width: '300px', height: '40px', fontSize: '25px' }}
           />
         </div>
         <div>
@@ -51,9 +52,10 @@ function Login() {
             type='password'
             value={password}
             onChange={handlePasswordChange}
+            style={{ width: '300px', height: '40px', fontSize: '25px' }}
           />
         </div>
-        <button type='submit'>Log In</button>
+        <button type='submit' style={{ width: '100px', height: '30px', fontSize: '20px' }}>Log In</button>
         {errorMessage && <p className='error-message'>{errorMessage}</p>}
       </form>
     </div>
