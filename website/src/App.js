@@ -4,7 +4,7 @@ import './App.css';
 import Contact from './Contact';
 import Signup from './Signup';
 import NewPoll from './newpoll';
-
+import Login from './Login';
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +12,7 @@ function App() {
         <header className="App-header">
           <a href="/">Home</a>
           <a href="/Signup">Sign up</a>
+          <a href="/login">Log in</a>
           <a href="/Contact">Contact</a>
           <a href='/NewPoll'>New Poll</a>
         </header>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/NewPoll" element={<NewPoll />} />
         </Routes>
       </div>
