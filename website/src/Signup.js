@@ -27,7 +27,7 @@ function Signup() {
             type='text'
             value={username}
             onChange={handleUsernameChange}
-            style={{ width: '300px', height: '40px' }} 
+            style={{ width: '300px', height: '40px', fontSize: '25px' }}
           />
         </div>
         <div>
@@ -36,7 +36,7 @@ function Signup() {
             type='password'
             value={password}
             onChange={handlePasswordChange}
-            style={{ width: '300px', height: '40px' }} 
+            style={{ width: '300px', height: '40px', fontSize: '25px' }} 
           />
         </div>
         <button type='submit'
