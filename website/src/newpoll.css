@@ -1,0 +1,38 @@
+
+.poll-button {
+    background-color: #3e3b3b;
+    color: white;
+    height: 44px;
+    width: 85px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+
+}
+
+/* Style the poll input group (the container) */
+.poll-input-group {
+    text-align: center; /* Center align the input and placeholder text */
+    margin: 20px; /* Add some spacing around the input field */
+  }
+  
+/* Style the poll form topic input field */
+.poll-form-topic {
+    width: 100%; /* Make the input field take the full width of the container */
+    padding: 10px; /* Add some padding to make it more visually appealing */
+    border: 2px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Increase the font size */
+    outline: none; /* Remove the default outline */
+  }
+
+.poll-input {
+    width: 50%; /* Make the input field take the full width of the container */
+    padding: 10px; /* Add some padding to make it more visually appealing */
+    border: 2px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Increase the font size */
+    outline: none; /* Remove the default outline */
+  }

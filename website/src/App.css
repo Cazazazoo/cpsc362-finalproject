@@ -48,6 +48,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  font-size: 30px;
   background-color: rgb(33, 33, 36); /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }

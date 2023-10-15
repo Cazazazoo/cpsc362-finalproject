@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
+import './newpoll.css';
+
 
 
 function NewPoll () {
@@ -11,13 +13,30 @@ function NewPoll () {
       setPageTitle("New Poll");
     }, []);
 
+    const handleAddOption = () => {
+      const form = document.getElementById("createNewPoll");
+      const newInput = document.createElement("input");
+      newInput.type = "text";
+      newInput.className = "poll-input";
+      newInput.name = `option${form.elements.length - 2}`;
+      newInput.autofocus = true;
+      newInput.placeholder = `Option ${form.elements.length - 2}`;
+      newInput.required = true;
+      form.insertBefore(newInput, document.querySelector(".add-option-button"));
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // You can handle form submission here, for example, by sending the data to a server.
+    };
+
     return (
       <div className='new-poll-container'>   
         <form
           className="poll-form"
           id="createNewPoll"
         >
-          <h1 className="form__title"> Create New Poll </h1>
+          <h1 className="poll_title"> Create New Poll </h1>
           <div className="poll-input-group">
             <input
               type="text"
@@ -50,18 +69,13 @@ function NewPoll () {
               required
             ></input>
           </div>
+          <br />
+          <button className="add-option-button" type="button" onClick={handleAddOption}>
+            Add Option
+          </button>
           <br/>
-          <div className="poll-input-group">
-            <input
-              type="text"
-              className='poll-input'
-              name="option3"
-              autofocus
-              placeholder="Option 3"
-            ></input>
-          </div>
-          <br/>
-          <button className="form__button" type="submit">
+          <button className="poll-button" type="submit">
+            {/* give it a random 4 number combination */}
             {" "}
             Submit
           </button>
