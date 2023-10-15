@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Contact from './Contact';
 import Signup from './Signup';
+import NewPoll from './newpoll';
 
 
 function App() {
@@ -13,11 +14,14 @@ function App() {
           <a href="/">Home</a>
           <a href="/Signup">Sign up</a>
           <a href="/Contact">Contact</a>
+          <a href='/NewPoll'>New Poll</a>
         </header>
       
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/Signup" element={<Signup/>} />
+          <Route path="/NewPoll" element={<NewPoll/>}/>
+          
         </Routes>
         <div className="home-container">
           <h1>Welcome to the Base Page</h1>
