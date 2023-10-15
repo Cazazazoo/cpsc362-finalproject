@@ -43,6 +43,10 @@ function Signup() {
         style={{ width: '100px', height: '30px', fontSize: '20px' }}>
           Sign Up
         </button>
+        <div>
+          <p>Stored Username: {username}</p>
+          <p>Stored Password: {password}</p>
+        </div>
         
       </form>
     </div>

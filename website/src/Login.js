@@ -47,7 +47,7 @@ function Login() {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label>Password: </label>
           <input
             type='password'
             value={password}
@@ -57,6 +57,10 @@ function Login() {
         </div>
         <button type='submit' style={{ width: '100px', height: '30px', fontSize: '20px' }}>Log In</button>
         {errorMessage && <p className='error-message'>{errorMessage}</p>}
+        <div>
+          <p>Stored Username: {username}</p>
+          <p>Stored Password: {password}</p>
+        </div>
       </form>
     </div>
   );
