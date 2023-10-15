@@ -5,7 +5,6 @@ import Contact from './Contact';
 import Signup from './Signup';
 import NewPoll from './newpoll';
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -16,19 +15,24 @@ function App() {
           <a href="/Contact">Contact</a>
           <a href='/NewPoll'>New Poll</a>
         </header>
-      
+
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/Signup" element={<Signup/>} />
-          <Route path="/NewPoll" element={<NewPoll/>}/>
-          
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/NewPoll" element={<NewPoll />} />
         </Routes>
-        <div className="home-container">
-          <h1>Welcome to the Base Page</h1>
-          <p>This is the base page content. You can add your content here.</p>
-        </div>
       </div>
     </BrowserRouter>
+  );
+}
+
+function Home() {
+  return (
+    <div className="home-container">
+      <h1>Welcome to the Base Page</h1>
+      <p>This is the base page content. You can add your content here.</p>
+    </div>
   );
 }
 
