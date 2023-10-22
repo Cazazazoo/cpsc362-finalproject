@@ -1,5 +1,6 @@
 const express = require('express');
 const sqlite3 = require('sqlite3');
+const cors = require('cors');
 
 const app = express();
 const port = 3001;
@@ -13,6 +14,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 // Define API endpoints for database operations
 app.get('/', (req, res) => {
@@ -26,17 +28,34 @@ app.get('/', (req, res) => {
     });
 });
 
-// app.post('/users', (req, res) => {
-//     const { name, email } = req.body;
-//     db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email], (err) => {
-//         if (err) {
-//             console.error(err.message);
-//             res.status(500).send('Internal server error');
-//         } else {
-//             res.send('User added successfully');
-//         }
-//     });
-// });
+app.post('/signup', (req, res) => {
+    const { username, password } = req.body;
+    db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, password], (err) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        } else {
+            res.send('User added successfully');
+        }
+    });
+});
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    db.get('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        }
+        
+        if (row) {
+            console.log(row);
+            res.send(row);
+        } else {
+            res.send(row);
+        }
+    });
+});    
 
 // Start the server
 app.listen(port, () => {

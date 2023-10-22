@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
+  const [responseMessage, setResponseMessage] = useState('');
+  
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -13,24 +14,32 @@ function Login() {
     setPassword(e.target.value);
   };
 
+  const login = () => {
+    Axios.post('http://localhost:3001/login',
+      {username: username, password: password,
+      }).then((response) => {
+        console.log(response);
+        if (username === response.data.username && password === response.data.password) {
+          setResponseMessage('Found user in database.')
+        } else {
+          console.log(response.data.username, response.data.password);
+          console.log(username, password);
+          setResponseMessage('User not found in database.')
+        }
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Basic validation
     if (!username || !password) {
-      setErrorMessage('Please fill in all fields.');
+      setResponseMessage('Please fill in all fields.');
       return;
     }
+    
+    login();
 
-    // Simulate authentication (replace with server authentication)
-    if (username === 'yourUsername' && password === 'yourPassword') {
-      // Successful login
-      setErrorMessage('');
-      alert('Logged in!');
-    } else {
-      // Failed login
-      setErrorMessage('Invalid username or password.');
-    }
   };
 
   return (
@@ -56,7 +65,7 @@ function Login() {
           />
         </div>
         <button type='submit' style={{ width: '100px', height: '30px', fontSize: '20px' }}>Log In</button>
-        {errorMessage && <p className='error-message'>{errorMessage}</p>}
+        <p>{responseMessage}</p>
         <div>
           <p>Stored Username: {username}</p>
           <p>Stored Password: {password}</p>
