@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Contact from './Contact';
 import Signup from './Signup';
-import NewPoll from './newpoll';
+import NewPoll from './Newpoll';
 import Login from './Login';
 
 function App() {
