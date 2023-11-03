@@ -10,3 +10,18 @@ INSERT INTO users (username, password) VALUES ("trung", "nguyen"), ("evan", "ng"
 UPDATE users
 SET id = 2
 WHERE username = "trung";
+
+CREATE TABLE polls(
+    id VARCHAR(255) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL, 
+    owner INTEGER NOT NULL,
+    FOREIGN KEY(owner) REFERENCES users(id)
+);
+
+CREATE TABLE responses(
+    id INTEGER PRIMARY KEY,
+    poll_id VARCHAR(255) NOT NULL,
+    response TEXT NOT NULL,
+    count INTEGER NOT NULL
+    FOREIGN KEY(poll_id) REFERENCES polls(id),
+)

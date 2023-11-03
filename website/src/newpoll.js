@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Axios from 'axios';
-import './Newpoll.css';
+import './newpoll.css';
 
 function NewPoll () {
     // Function to set the page title
