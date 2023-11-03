@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Contact from './Contact';
-import Signup from './Signup';
+import Contact from './contact';
+import Signup from './signup';
 import NewPoll from './newpoll';
-import Login from './Login';
+import Login from './login';
 
 function App() {
   return (
