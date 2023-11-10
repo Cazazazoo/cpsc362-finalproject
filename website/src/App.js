@@ -5,6 +5,7 @@ import Contact from './contact';
 import Signup from './signup';
 import NewPoll from './newpoll';
 import Login from './login';
+import ViewPoll from './viewpoll'
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <a href="/signup">Sign up</a>
           <a href="/login">Log in</a>
           <a href="/contact">Contact</a>
-          <a href='/newPoll'>New Poll</a>
+          <a href='/newpoll'>New Poll</a>
+          <a href='/viewpoll'>View Poll</a>
         </header>
 
         <Routes>
@@ -23,7 +25,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/newPoll" element={<NewPoll />} />
+          <Route path="/newpoll" element={<NewPoll />} />
+          <Route path="/viewpoll" element={<ViewPoll />} />
         </Routes>
       </div>
     </BrowserRouter>
