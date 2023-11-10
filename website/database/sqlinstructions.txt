@@ -22,6 +22,12 @@ CREATE TABLE responses(
     id INTEGER PRIMARY KEY,
     poll_id VARCHAR(255) NOT NULL,
     response TEXT NOT NULL,
-    count INTEGER NOT NULL
-    FOREIGN KEY(poll_id) REFERENCES polls(id),
-)
+    count INTEGER NOT NULL,
+    FOREIGN KEY(poll_id) REFERENCES polls(id)
+);
+
+INSERT INTO polls (id, title, owner) VALUES ("asdf", "What is your favorite color?", 1);
+INSERT INTO responses (poll_id, response, count) VALUES ("asdf", "Blue", 3), ("asdf", "Red", 45), ("asdf", "Yellow", 123);
+
+INSERT INTO polls (id, title, owner) VALUES ("qwer", "What is your favorite food?", 2);
+INSERT INTO responses (poll_id, response, count) VALUES ("qwer", "Pizza", 2), ("qwer", "Pasta", 0), ("qwer", "Burgers", 1);

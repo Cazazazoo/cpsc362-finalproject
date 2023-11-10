@@ -18,14 +18,39 @@ app.use(cors());
 
 // Define API endpoints for database operations
 app.get('/', (req, res) => {
+    databaseInfo = {};
     db.all('SELECT * FROM users', (err, rows) => {
         if (err) {
             console.error(err.message);
             res.status(500).send('Internal server error');
         } else {
-            res.json(rows);
+            console.log(rows);
+            databaseInfo['users'] = rows;
         }
     });
+    db.all('SELECT * FROM polls', (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        } else {
+            console.log(rows);
+            databaseInfo['polls'] = rows;
+        }
+    });
+    db.all('SELECT * FROM responses', (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        } else {
+            console.log(rows);
+            databaseInfo['responses'] = rows;
+        }
+    });
+    for (var key in databaseInfo) {
+        console.log(key);
+        console.log(databaseInfo[key]);
+    }
+    res.send(databaseInfo);
 });
 
 app.post('/signup', (req, res) => {
@@ -56,6 +81,29 @@ app.post('/login', (req, res) => {
         }
     });
 });    
+
+app.post('/newPoll', (req, res) => {
+    const pollData = {
+        title: 'Favorite Color Poll',
+        responses: ['Red', 'Green', 'Blue']
+    };
+    
+    const { title, responses } = pollData;
+    
+    for (const response of responses) {
+        console.log(title);
+        console.log(response);
+    }
+    // const { title, responses } = req.body;
+    db.run('INSERT INTO polls (title, responses) VALUES (?, ?)', [title, responses], (err) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        } else {
+            res.send('Poll added successfully');
+        }
+    });
+});
 
 // Start the server
 app.listen(port, () => {
