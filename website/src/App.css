@@ -1,7 +1,7 @@
-.App {
+/*.App {
   text-align: center;
   background-color: #3e3b3b;
-}
+}*/
 
 
 .App-header a{
@@ -31,6 +31,7 @@
   background-color: #282424; /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
+
 .signup-container{
   display: flex;
   flex-direction: column;
@@ -41,6 +42,103 @@
   background-color:#282424; /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
+
+.navbar {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  height: 120px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+  
+.navbar-container {
+  display: center;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 80px;
+  max-width: 1500px;
+}
+  
+  .navbar-logo {
+    color: #ffffff;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .fa-typo3 {
+    margin-left: 0.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .nav-menu {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 60vw;
+    justify-content: end;
+    margin-right: 2rem;
+  }
+  
+  .nav-item {
+    display: inline-block;
+    justify-content: center;
+    height: 40px;
+  }
+  
+  .nav-links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    height: 100%
+  }
+  
+  .nav-links:hover {
+    border-bottom: 4px solid #fff;
+    transition: all 0.2s ease-out;
+  }
+  
+  .nav-donate {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 20px;
+    font-size: 20px;
+  }
+
+  .nav-donate:hover{
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg");
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    transition: all 0.4s ease-out;
+  }
+
+  .fa-bars {
+    color: #fff;
+  }
+  
+  .nav-links-mobile {
+    display: none;
+  }
+  
+  .menu-icon {
+    display: none;
+  }
 
 .new-poll-container{
   display: flex;
@@ -64,6 +162,15 @@
   color: white; /* Change the text color to your preferred color */
 }
 
+.donate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color:#282424; /* Change the background color to your preferred color */
+  color: white; /* Change the text color to your preferred color */
+}
 .view-poll-container{
   display: flex;
   flex-direction: column;
