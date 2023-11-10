@@ -120,6 +120,7 @@ function NewPoll () {
           <button className="remove-option-button" type="button" onClick={handleRemoveOption}>
             Remove Option
           </button>
+          <br/>
           < br/>
           <button className="poll-button" type="submit">
             {/* give it a random 4 number combination */}

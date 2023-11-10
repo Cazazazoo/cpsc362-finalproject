@@ -4,7 +4,9 @@ import './App.css';
 import Contact from './Contact';
 import Signup from './Signup';
 import NewPoll from './newpoll';
-import Login from './Login';
+import Login from './login';
+import ViewPoll from './viewpoll'
+import Login from './login';
 import Donate from './Donate';
 import FindPoll from './findpoll';
 
@@ -48,6 +50,11 @@ function App() {
             </a>
           </li>
           <li className='nav-item'>
+            <a href="/viewpoll" className='nav-links'>
+              View Poll
+            </a>
+          </li>
+          <li className='nav-item'>
             <a href="/donate" className='nav-donate'>
               Buy us an English Tea!
             </a>
@@ -67,6 +74,8 @@ function App() {
           <Route path="/newPoll" element={<NewPoll />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/newpoll" element={<NewPoll />} />
+          <Route path="/viewpoll" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

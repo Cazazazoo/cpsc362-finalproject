@@ -48,3 +48,15 @@
   font-size: medium;
   cursor: pointer;
 }
+
+.remove-option-button {
+  background-color: #3e3b3b;
+  color: white;
+  height: 35px;
+  width: 150px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: medium;
+  cursor: pointer;
+}
