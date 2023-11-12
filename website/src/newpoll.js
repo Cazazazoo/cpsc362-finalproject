@@ -34,43 +34,41 @@ function NewPoll () {
       }
     };
     
-
     // pollTopic and setTopic, which will hold the current state value and a function to update that state. useState(''): 
     // This is a call to the useState hook. It initializes the state variable pollTopic with an initial value of an empty string (''). 
     // The setTopic function is used to update the value of pollTopic.
-    const [pollTopic, setTopic] = useState('');
-    const [pollOptions, setPollOptions] = useState('');
-    const [pollData, setPollData] = useState({});
+    const [pollTitle, setTitle] = useState('');
+    const [pollResponses, setResponses] = useState({});
 
     // get user input for the topic of the poll
-    const handleTopicChange = (e) => {
-      setTopic(e.target.value);
+    const handleTitleChange = (e) => {
+      setTitle(e.target.value);
     };
 
-    // still figuring this out
-    const handleOptionsChange = (e) => {
-      setPollOptions(e.target.value);
+    const handlePollResponses = (e) => {
+      // Add the user input to the pollResponses object
+      setResponses({ ...pollResponses, [e.target.name]: e.target.value });
     };
-  
-    // submit poll
-    const handleSubmit = (e) => {
-      e.preventDefault();
 
-      // Prepare the poll data to send to the server
-      const pollData = {
-        topic: pollTopic,
-        options: pollOptions.split(',').map((option) => option.trim()),
-      };
+    const createPollID = () => {
+      // Generate a random string of 4 alphabetical characters
+      // Code taken from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+      var s = "abcdefghijklmnopqrstuvwxyz";
+      const randomString = Array(4).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+      return randomString;
+    };
+
+    const sendPollData = () => {
+      const pollID = createPollID();
+      const pollData = {pollID, pollTitle, pollResponses}
 
       // Make an HTTP POST request to send the data to the server
-      Axios
-        .post('http://localhost:3000/newPoll', pollData) // Adjust the URL to match your backend route
+      Axios.post('http://localhost:3001/newPoll', pollData)
         .then((response) => {
-          // Handle the response from the server (e.g., display a success message)
           alert('Added poll to JSON.');
           // Clear the form fields if needed
-          setTopic('');
-          setPollOptions('');
+          setTitle('');
+          setResponses('');
         })
         .catch((error) => {
           // Handle any errors (e.g., display an error message)
@@ -79,20 +77,27 @@ function NewPoll () {
         });
     };
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(pollTitle);
+      console.log(pollResponses);
+      sendPollData();
+    };
+
     return (
       <div className='new-poll-container'>   
         <form onSubmit={handleSubmit}
           className="poll-form"
           id="createNewPoll"
         >
-          <h1 className="poll_title"> Create New Poll </h1>
+          <h1 className="title"> Create New Poll </h1>
           <div className="poll-input-group">
             <input
               type="text"
-              className="poll-form-topic"
-              name="topic"
-              value={pollTopic}
-              onChange={handleTopicChange}
+              className="poll-form-title"
+              name="title"
+              value={pollTitle}
+              onChange={handleTitleChange}
               autofocus
               placeholder="Poll Topic"
               required
@@ -105,10 +110,10 @@ function NewPoll () {
             <input
               type="text"
               className="poll-input"
-              name={`option${index + 1}`}
-              autoFocus
+              name={`response${index + 1}`}
               placeholder={`Option ${index + 1}`}
               required
+              onChange={handlePollResponses}
             />
           </div>
           ))}
