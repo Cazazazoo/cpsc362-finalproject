@@ -3,7 +3,7 @@ import React from 'react';
 function Donate(){
     return(
         <div className='donate-container'>
-            <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt='img'
+            <img src="https://img.freepik.com/free-photo/fresh-coffee-steams-wooden-table-close-up-generative-ai_188544-8923.jpg" alt='img'
                 height='300px'
                 width='600px'
             />
