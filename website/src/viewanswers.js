@@ -1,6 +1,6 @@
 import React from 'react';
 
-function viewanswers(){
+function ViewAnswers(){
     return (
         <div className='view-answer-container'>
           <h1> Poll answers </h1>
@@ -8,4 +8,4 @@ function viewanswers(){
       );
 }
 
-export default viewanswers;
+export default ViewAnswers;
