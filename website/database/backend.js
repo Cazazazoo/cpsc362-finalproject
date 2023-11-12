@@ -58,17 +58,20 @@ app.post('/login', (req, res) => {
 });    
 
 // trying something CZ
-app.get('/polls', (req, res) => {
-    db.all('SELECT * FROM polls', (err, rows) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
-  
-      res.json(rows);
+// Modify the /polls endpoint to accept a code parameter
+app.get('/polls/:code', (req, res) => {
+    const code = req.params.code;
+    
+    db.all('SELECT * FROM polls WHERE code = ?', [code], (err, rows) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        res.json(rows);
     });
-  });
+});
 
 // Start the server
 app.listen(port, () => {
