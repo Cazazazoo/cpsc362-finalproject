@@ -83,26 +83,30 @@ app.post('/login', (req, res) => {
 });    
 
 app.post('/newPoll', (req, res) => {
-    const pollData = {
-        title: 'Favorite Color Poll',
-        responses: ['Red', 'Green', 'Blue']
-    };
+    const id = req.body['pollID'];
+    const title = req.body['pollTitle'];
+    const responses = req.body['pollResponses'];
     
-    const { title, responses } = pollData;
-    
-    for (const response of responses) {
-        console.log(title);
-        console.log(response);
+    console.log(id);
+    console.log(title);
+    for (const response in responses) {
+        console.log(responses[response]);
     }
-    // const { title, responses } = req.body;
-    db.run('INSERT INTO polls (title, responses) VALUES (?, ?)', [title, responses], (err) => {
+
+    db.run('INSERT INTO polls (id, title, owner) VALUES (?, ?, ?)', [id, title, 1], (err) => {
         if (err) {
             console.error(err.message);
             res.status(500).send('Internal server error');
-        } else {
-            res.send('Poll added successfully');
         }
     });
+    for (const response in responses) {
+        db.run('INSERT INTO responses (poll_id, response, count) VALUES (?, ?, ?)', [id, responses[response], 0], (err) => {
+            if (err) {
+                console.error(err.message);
+                res.status(500).send('Internal server error');
+            }
+        });
+    };
 });
 
 // Start the server
