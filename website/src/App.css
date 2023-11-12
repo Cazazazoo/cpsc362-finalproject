@@ -182,3 +182,11 @@
   background-color: rgb(33, 33, 36); /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
+
+.view-answer-container{
+  display: flex;
+  background-color: rgb(33, 33, 36);
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
