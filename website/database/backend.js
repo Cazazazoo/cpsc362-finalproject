@@ -107,6 +107,9 @@ app.post('/newPoll', (req, res) => {
             }
         });
     };
+
+    const pollData = {id, title, responses};
+    res.send(pollData);
 });
 
 // Start the server
