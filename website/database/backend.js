@@ -18,14 +18,39 @@ app.use(cors());
 
 // Define API endpoints for database operations
 app.get('/', (req, res) => {
+    databaseInfo = {};
     db.all('SELECT * FROM users', (err, rows) => {
         if (err) {
             console.error(err.message);
             res.status(500).send('Internal server error');
         } else {
-            res.json(rows);
+            console.log(rows);
+            databaseInfo['users'] = rows;
         }
     });
+    db.all('SELECT * FROM polls', (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        } else {
+            console.log(rows);
+            databaseInfo['polls'] = rows;
+        }
+    });
+    db.all('SELECT * FROM responses', (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        } else {
+            console.log(rows);
+            databaseInfo['responses'] = rows;
+        }
+    });
+    for (var key in databaseInfo) {
+        console.log(key);
+        console.log(databaseInfo[key]);
+    }
+    res.send(databaseInfo);
 });
 
 app.post('/signup', (req, res) => {
@@ -56,6 +81,33 @@ app.post('/login', (req, res) => {
         }
     });
 });    
+
+app.post('/newPoll', (req, res) => {
+    const id = req.body['pollID'];
+    const title = req.body['pollTitle'];
+    const responses = req.body['pollResponses'];
+    
+    console.log(id);
+    console.log(title);
+    for (const response in responses) {
+        console.log(responses[response]);
+    }
+
+    db.run('INSERT INTO polls (id, title, owner) VALUES (?, ?, ?)', [id, title, 1], (err) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal server error');
+        }
+    });
+    for (const response in responses) {
+        db.run('INSERT INTO responses (poll_id, response, count) VALUES (?, ?, ?)', [id, responses[response], 0], (err) => {
+            if (err) {
+                console.error(err.message);
+                res.status(500).send('Internal server error');
+            }
+        });
+    };
+});
 
 // trying something CZ
 // Modify the /polls endpoint to accept a code parameter

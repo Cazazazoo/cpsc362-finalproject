@@ -8,18 +8,18 @@ function ViewPoll () {
   // State to track the selected option
   const [selectedOption, setSelectedOption] = useState(null);
 
-  // UseHistory hook for navigation
-  // const history = useHistory();
+  // Four-digit code to fetch the specific poll
+  const code = 'asdf'; // Replace with the actual code or get it dynamically
 
-  // UseEffect to fetch poll data from the database
+  // UseEffect to fetch poll data from the server based on the code
   useEffect(() => {
-    fetch('http://localhost:3001/polls') // Replace with your actual server URL
+    fetch(`http://localhost:3001/polls/${code}`)
       .then((response) => response.json())
       .then((data) => {
         setPollData(data);
       })
       .catch((error) => console.error('Error fetching data:', error));
-  }, []); // Empty dependency array means it will run once when the component mounts
+  }, [code]);
 
   // Function to handle option selection
   const handleOptionSelect = (optionId) => {
