@@ -183,10 +183,23 @@
   color: white; /* Change the text color to your preferred color */
 }
 
-.view-answer-container{
-  display: flex;
+.view-answer-container {
+  margin: 0px; /* Add margin for spacing */
+  padding: 20px; /* Add padding for spacing */
+  text-align: center;
   background-color: rgb(33, 33, 36);
-  justify-content: center;
-  height: 100vh;
-  color: white;
+  height: 200vh;
+  color:white;
+  
 }
+
+
+.view-id-container {
+  display: inline-flex;
+  text-align: center;
+  line-height: .5;
+  border:5px solid #ddd;
+  width: 80%;
+}
+
+
