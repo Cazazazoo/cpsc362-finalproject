@@ -112,6 +112,23 @@ app.post('/newPoll', (req, res) => {
     res.send(pollData);
 });
 
+
+app.get('/polls', (req, res) => {
+    db.all('SELECT * FROM polls', (err, rows) => {
+        res.send(rows);
+    });
+    
+});
+
+app.get('/resp', (req, res) => {
+    db.all('SELECT * FROM responses', (err, rows) => {
+        res.send(rows);
+    });
+});
+
+
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
