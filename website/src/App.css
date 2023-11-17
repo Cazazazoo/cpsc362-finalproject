@@ -190,6 +190,8 @@
   background-color: rgb(33, 33, 36);
   height: 200vh;
   color:white;
+  font-size: 35px;
+  
   
 }
 
@@ -197,9 +199,10 @@
 .view-id-container {
   display: inline-flex;
   text-align: center;
-  line-height: .5;
+  line-height: 1;
   border:5px solid #ddd;
-  width: 80%;
+  width: 90%;
+  margin: 100px;
 }
 
 
