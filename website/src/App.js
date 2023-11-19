@@ -80,7 +80,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/newpoll" element={<NewPoll />} />
-          <Route path="/viewpoll" element={<ViewPoll />} />
+          <Route path="/viewpoll/:code" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewanswers" element={<Viewanswers />}/>

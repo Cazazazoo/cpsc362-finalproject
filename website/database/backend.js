@@ -127,7 +127,39 @@ app.get('/resp', (req, res) => {
 });
 
 
+app.post('/updateResponseCount', (req, res) => {
+    const pollID = req.body['code'];
+    const responseID = req.body['selectedOption'];
+    
+    console.log(pollID);
+    console.log(responseID);
 
+    // Update the response count for the specified response in the 'responses' table
+    db.run('UPDATE responses SET count = count + 1 WHERE poll_id = ? AND id = ?', [pollId, responseId], (err) => {
+        if (err) {
+        console.error(err.message);
+        return res.status(500).send('Internal server error');
+        }
+
+        res.status(200).send('Response count updated successfully');
+    });
+});
+
+// // trying something CZ
+// // Modify the /polls endpoint to accept a code parameter
+// app.get('/polls/:id', (req, res) => {
+//     const id = req.params.id;
+    
+//     db.all('SELECT * FROM polls WHERE id = ?', [code], (err, rows) => {
+//         if (err) {
+//             console.error(err);
+//             res.status(500).send('Internal Server Error');
+//             return;
+//         }
+
+//         res.send(rows);
+//     });
+// });
 
 // Start the server
 app.listen(port, () => {
