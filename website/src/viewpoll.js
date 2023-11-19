@@ -18,12 +18,12 @@ function ViewPoll () {
   // State to track the selected option
   const [selectedOption, setSelectedOption] = useState(null);
 
-  // Four-digit code to fetch the specific poll
-  const code = 'asdf'; // Replace with the actual code or get it dynamically
+  // Four-digit pollID to fetch the specific poll
+  const pollID = 'asdf'; // Replace with the actual pollID or get it dynamically
   // Redirect to the specified poll
   useEffect(() => {
-    navigate(`/viewpoll/${code}`);
-  }, [code, navigate]);
+    navigate(`/viewpoll/${pollID}`);
+  }, [pollID, navigate]);
 
   // Fetch poll data when the component mounts
   useEffect(() => {
@@ -47,27 +47,27 @@ function ViewPoll () {
       });
   }, []);
 
-  // // UseEffect to fetch poll data from the server based on the code
+  // // UseEffect to fetch poll data from the server based on the pollID
   // useEffect(() => {
-  //   fetch(`http://localhost:3001/polls/${code}`)
+  //   fetch(`http://localhost:3001/polls/${pollID}`)
   //     .then((response) => response.json())
   //     .then((data) => {
   //       setPollData(data);
   //     })
   //     .catch((error) => console.error('Error fetching data:', error));
-  // }, [code]);
+  // }, [pollID]);
 
   // Filter and update titles and responses based on the searched poll ID
   useEffect(() => {
-    if (code && pollData && responses) {
+    if (pollID && pollData && responses) {
       // Filter polls based on the searched poll ID
-      const filteredPoll = pollData.find(poll => poll.id === code);
+      const filteredPoll = pollData.find(poll => poll.id === pollID);
       console.log('Filtered Poll:', filteredPoll);
 
       // there is at least one poll that matches the specified condition.
       if (filteredPoll) {
         // Filter responses based on the searched poll ID
-        const associatedResponses = responses.filter(response => response.poll_id === code);
+        const associatedResponses = responses.filter(response => response.poll_id === pollID);
         // //total count of responses
         // const totalCount = associatedResponses.reduce((acc,response)=> acc + response.count, 0);
   
@@ -85,7 +85,7 @@ function ViewPoll () {
       setFilteredTitle('');
       setFilteredResponses([]);
     }
-  }, [code, pollData, filteredResponses, responses]);
+  }, [pollID, pollData, responses]);
   
 
   // Function to handle option selection
@@ -104,8 +104,8 @@ function ViewPoll () {
   // Function to send the selected option to the server
   const sendOptionSelected = (selectedOption) => {
     // Make an HTTP POST request to update the count in the database
-    Axios.post('http://localhost:3001/updateResponseCount', {
-      poll_id: code, // Assuming code is the poll ID
+    Axios.put('http://localhost:3001/updateResponseCount', {
+      poll_id: pollID, // Assuming pollID is the poll ID
       response_id: selectedOption,
     })
       .then((response) => {
