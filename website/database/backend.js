@@ -107,7 +107,27 @@ app.post('/newPoll', (req, res) => {
             }
         });
     };
+
+    const pollData = {id, title, responses};
+    res.send(pollData);
 });
+
+
+app.get('/polls', (req, res) => {
+    db.all('SELECT * FROM polls', (err, rows) => {
+        res.send(rows);
+    });
+    
+});
+
+app.get('/resp', (req, res) => {
+    db.all('SELECT * FROM responses', (err, rows) => {
+        res.send(rows);
+    });
+});
+
+
+
 
 // trying something CZ
 // Modify the /polls endpoint to accept a code parameter

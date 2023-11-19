@@ -182,3 +182,27 @@
   background-color: rgb(33, 33, 36); /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
+
+.view-answer-container {
+  margin: 0px; /* Add margin for spacing */
+  padding: 20px; /* Add padding for spacing */
+  text-align: center;
+  background-color: rgb(33, 33, 36);
+  height: 200vh;
+  color:white;
+  font-size: 35px;
+  
+  
+}
+
+
+.view-id-container {
+  display: inline-flex;
+  text-align: center;
+  line-height: 1;
+  border:5px solid #ddd;
+  width: 90%;
+  margin: 100px;
+}
+
+

@@ -8,6 +8,7 @@ import Login from './login';
 import ViewPoll from './viewpoll'
 import Donate from './Donate';
 import FindPoll from './findpoll';
+import Viewanswers from './viewanswers';
 
 function App() {
   
@@ -63,6 +64,11 @@ function App() {
               Contact
             </a>
           </li>
+          <li className='nav-item'>
+            <a href="/viewanswers" className='nav-links'>
+              View answers
+            </a>
+          </li>
         </u1>
       </div>
     </nav>
@@ -77,6 +83,7 @@ function App() {
           <Route path="/viewpoll" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/viewanswers" element={<Viewanswers />}/>
         </Routes>
     </BrowserRouter>
   );

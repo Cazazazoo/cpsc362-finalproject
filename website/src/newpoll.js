@@ -65,10 +65,7 @@ function NewPoll () {
       // Make an HTTP POST request to send the data to the server
       Axios.post('http://localhost:3001/newPoll', pollData)
         .then((response) => {
-          alert('Added poll to JSON.');
-          // Clear the form fields if needed
-          setTitle('');
-          setResponses('');
+          console.log('response.data: ', response.data);          
         })
         .catch((error) => {
           // Handle any errors (e.g., display an error message)
