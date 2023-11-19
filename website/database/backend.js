@@ -127,15 +127,15 @@ app.get('/resp', (req, res) => {
 });
 
 
-app.post('/updateResponseCount', (req, res) => {
-    const pollID = req.body['code'];
+app.put('/updateResponseCount', (req, res) => {
+    const pollID = req.body['pollID'];
     const responseID = req.body['selectedOption'];
     
     console.log(pollID);
     console.log(responseID);
 
     // Update the response count for the specified response in the 'responses' table
-    db.run('UPDATE responses SET count = count + 1 WHERE poll_id = ? AND id = ?', [pollId, responseId], (err) => {
+    db.run('UPDATE responses SET count = count + 1 WHERE poll_id = ? AND id = ?', [pollID, responseID], (err) => {
         if (err) {
         console.error(err.message);
         return res.status(500).send('Internal server error');
