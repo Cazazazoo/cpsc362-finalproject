@@ -1,4 +1,5 @@
 import React from 'react';
+import Credits from './Creditsbar';
 
 function Donate(){
     return(
@@ -22,6 +23,7 @@ function Donate(){
             <p>
                 And this guy especially lol
             </p>
+            <Credits/>
         </div>
     );
 }

@@ -205,4 +205,32 @@
   margin: 100px;
 }
 
+.credits-bar-container {
+  background-color: #000;
+  position:static;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
+.credits-style{
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.button-container{
+  display:flex;
+  justify-content:space-between;
+  width:300px;
+  margin: auto;
+}
+
+.button-style{
+  padding:15px;
+  background-color: #fff;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}

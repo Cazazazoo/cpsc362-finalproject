@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import './App.css';
-import Contact from './contact';
-import Signup from './signup';
+import Contact from './Contact';
+import Signup from './Signup';
 import NewPoll from './newpoll';
-import Login from './login';
+import Login from './Login';
 import ViewPoll from './viewpoll'
 import Donate from './Donate';
-import FindPoll from './findpoll';
 import Viewanswers from './viewanswers';
+import Credits from './Creditsbar';
+import SearchButtonWithInput from './Button';
+
 
 function App() {
   
@@ -35,7 +38,7 @@ function App() {
             </a>
           </li>
           <li className='nav-item'>
-            <a href='/findPoll' className='nav-links'>
+            <a href='/' className='nav-links'>
               Find Poll
             </a>
           </li>
@@ -72,14 +75,12 @@ function App() {
         </u1>
       </div>
     </nav>
-
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/findPoll" element={<FindPoll />} />
+          <Route path="/findPoll" element={<Home />} />
           <Route path="/newPoll" element={<NewPoll />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/newpoll" element={<NewPoll />} />
           <Route path="/viewpoll/:code" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
@@ -91,22 +92,37 @@ function App() {
 
 
 
+
 function Home() {
   return (
-    <div className="home-container">
+
+      <div className="home-container">
       <h1>
         Welcome to Polls.io
       </h1>
-      <h2>
-        Create your new poll now!
-      </h2>
-      <img src="https://i.imgflip.com/85j4a3.jpg" alt='img'
-        align="center"
-        width="450px"
-        height="650px"
-      />
-    </div>
+        <h2 className='button-container'>
+          <Link to="/newPoll">
+            <button className={'button-style'}>
+              Create a Poll
+            </button>
+          </Link>
+          <Link to="/">
+            <button className={'button-style'}>
+              <SearchButtonWithInput />
+            </button>
+          </Link>
+        </h2>
+        <img src="https://i.imgflip.com/85j4a3.jpg" alt='img'
+          align="center"
+          width="450px"
+          height="650px"
+        />
+        <Credits/>
+      </div>
+
   );
 }
+
+
 
 export default App;
