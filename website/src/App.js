@@ -84,7 +84,7 @@ function App() {
           <Route path="/viewpoll/:pollID" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/viewanswers" element={<Viewanswers />}/>
+          <Route path="/viewanswers/:pollID" element={<Viewanswers />}/>
         </Routes>
     </BrowserRouter>
   );

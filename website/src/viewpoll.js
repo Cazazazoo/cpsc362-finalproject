@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 function ViewPoll () {
@@ -18,6 +18,9 @@ function ViewPoll () {
 
   // State to track the selected option
   const [selectedOption, setSelectedOption] = useState(null);
+
+
+  const [pollLinkVisible, setLinkVisible] = useState(false); // State variable to track link visibility
 
   const { pollID } = useParams();
   useEffect(() => {
@@ -111,6 +114,8 @@ function ViewPoll () {
     console.log('Selected Option:', selectedOption);
   }, [selectedOption]);
   
+  const navigate = useNavigate();
+
   // Function to send the selected option to the server
   const sendOptionSelected = () => {
     const optionData = {pollID, selectedOption};
@@ -142,6 +147,7 @@ function ViewPoll () {
     }
 
     sendOptionSelected();
+    navigate({pathname: `/viewanswers/${pollID}`});
   };
 
   // Your component UI goes here
@@ -170,6 +176,7 @@ function ViewPoll () {
           </form>
         </>
       )}
+
     </div>
   );
 }
