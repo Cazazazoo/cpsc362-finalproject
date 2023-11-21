@@ -39,6 +39,8 @@ function NewPoll () {
     // The setTopic function is used to update the value of pollTopic.
     const [pollTitle, setTitle] = useState('');
     const [pollResponses, setResponses] = useState({});
+    const [pollID, setID] = useState('');
+    const [pollLinkVisible, setLinkVisible] = useState(false); // State variable to track link visibility
 
     // get user input for the topic of the poll
     const handleTitleChange = (e) => {
@@ -55,24 +57,26 @@ function NewPoll () {
       // Code taken from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
       var s = "abcdefghijklmnopqrstuvwxyz";
       const randomString = Array(4).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+      setID(randomString); // Update pollID state variable
       return randomString;
     };
 
-    const sendPollData = () => {
-      const pollID = createPollID();
-      const pollData = {pollID, pollTitle, pollResponses}
+  const sendPollData = () => {
+    const pollID = createPollID();
+    const pollData = { pollID, pollTitle, pollResponses };
 
-      // Make an HTTP POST request to send the data to the server
-      Axios.post('http://localhost:3001/newPoll', pollData)
-        .then((response) => {
-          console.log('response.data: ', response.data);          
-        })
-        .catch((error) => {
-          // Handle any errors (e.g., display an error message)
-          alert('An error occurred while creating the poll.');
-          console.error(error);
-        });
-    };
+    // Make an HTTP POST request to send the data to the server
+    Axios.post('http://localhost:3001/newPoll', pollData)
+      .then((response) => {
+        console.log('response.data: ', response.data);
+        setLinkVisible(true); // Show the link after successful submission
+      })
+      .catch((error) => {
+        // Handle any errors (e.g., display an error message)
+        alert('An error occurred while creating the poll.');
+        console.error(error);
+      });
+  };
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -81,26 +85,27 @@ function NewPoll () {
       sendPollData();
     };
 
-    return (
-      <div className='new-poll-container'>   
-        <form onSubmit={handleSubmit}
-          className="poll-form"
-          id="createNewPoll"
-        >
-          <h1 className="title"> Create New Poll </h1>
-          <div className="poll-input-group">
-            <input
-              type="text"
-              className="poll-form-title"
-              name="title"
-              value={pollTitle}
-              onChange={handleTitleChange}
-              autofocus
-              placeholder="Poll Topic"
-              required
-            ></input>
-          </div>
-          <br/>
+  return (
+    <div className='new-poll-container'>
+      <form
+        onSubmit={handleSubmit}
+        className="poll-form"
+        id="createNewPoll"
+      >
+        <h1 className="title"> Create New Poll </h1>
+        <div className="poll-input-group">
+          <input
+            type="text"
+            className="poll-form-title"
+            name="title"
+            value={pollTitle}
+            onChange={handleTitleChange}
+            autoFocus
+            placeholder="Poll Topic"
+            required
+          ></input>
+        </div>
+        <br />
         {/* Render option input fields dynamically based on optionCount */}
         {Array.from({ length: optionCount }).map((_, index) => (
           <div className="poll-input-group" key={index}>
@@ -113,28 +118,31 @@ function NewPoll () {
               onChange={handlePollResponses}
             />
           </div>
-          ))}
-          <br />
-          <button className="add-option-button" type="button" onClick={handleAddOption}>
-            Add Option
-          </button>
-          <br/>
-          <button className="remove-option-button" type="button" onClick={handleRemoveOption}>
-            Remove Option
-          </button>
-          <br/>
-          < br/>
-          <button className="poll-button" type="submit">
-            {/* give it a random 4 number combination */}
-            {" "}
-            Submit
-          </button>
-          <p class="form__text">
-          </p>
-          
-        </form>
-      </div>
-    );
-}
+        ))}
+        <br />
+        <button className="add-option-button" type="button" onClick={handleAddOption}>
+          Add Option
+        </button>
+        <br />
+        <button className="remove-option-button" type="button" onClick={handleRemoveOption}>
+          Remove Option
+        </button>
+        <br />
+        <br />
+        <button className="poll-button" type="submit">
+          Submit
+        </button>
+        <p className="form__text"></p>
+      </form>
+
+      {/* Hidden div to display the link */}
+      {pollLinkVisible && (
+        <div className="poll-link">
+          <a href={`viewpoll/${pollID}`}>http://localhost:3000/viewpoll/{pollID}</a>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default NewPoll;
