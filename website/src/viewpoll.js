@@ -115,7 +115,7 @@ function ViewPoll () {
   const sendOptionSelected = () => {
     const optionData = {pollID, selectedOption};
     // Make an HTTP POST request to update the count in the database
-    Axios.put('http://localhost:3001/updateResponseCount', optionData)
+    Axios.post('http://localhost:3001/updateResponseCount', optionData)
       .then((response) => {
         console.log('Response from server:', response.data);
         // Handle success if needed
@@ -130,6 +130,9 @@ function ViewPoll () {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log(pollID);
+    console.log(selectedOption);
 
     // Check if an option is selected
     if (selectedOption == null) {
