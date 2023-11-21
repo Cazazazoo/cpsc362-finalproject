@@ -78,10 +78,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/findPoll" element={<Home />} />
-          <Route path="/newPoll" element={<NewPoll />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/viewpoll/:code" element={<ViewPoll />} />
+          <Route path="/newpoll" element={<NewPoll />} />
+          <Route path="/viewpoll/:pollID" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewanswers" element={<Viewanswers />}/>

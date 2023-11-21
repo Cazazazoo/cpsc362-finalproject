@@ -112,6 +112,24 @@ app.post('/newPoll', (req, res) => {
     res.send(pollData);
 });
 
+app.put('/updateResponseCount', (req, res) => {
+    const pollID = req.body['pollID'];
+    const responseID = req.body['selectedOption'];
+    
+    console.log(pollID);
+    console.log(responseID);
+    
+
+    // Update the response count for the specified response in the 'responses' table
+    db.run('UPDATE responses SET count = count + 1 WHERE poll_id = ? AND id = ?', [pollID, responseID], (err) => {
+        if (err) {
+        console.error(err.message);
+        return res.status(500).send('Internal server error');
+        }
+
+        res.status(200).send('Response count updated successfully');
+    });
+});
 
 app.get('/polls', (req, res) => {
     db.all('SELECT * FROM polls', (err, rows) => {
@@ -123,25 +141,6 @@ app.get('/polls', (req, res) => {
 app.get('/resp', (req, res) => {
     db.all('SELECT * FROM responses', (err, rows) => {
         res.send(rows);
-    });
-});
-
-
-app.put('/updateResponseCount', (req, res) => {
-    const pollID = req.body['pollID'];
-    const responseID = req.body['selectedOption'];
-    
-    console.log(pollID);
-    console.log(responseID);
-
-    // Update the response count for the specified response in the 'responses' table
-    db.run('UPDATE responses SET count = count + 1 WHERE poll_id = ? AND id = ?', [pollID, responseID], (err) => {
-        if (err) {
-        console.error(err.message);
-        return res.status(500).send('Internal server error');
-        }
-
-        res.status(200).send('Response count updated successfully');
     });
 });
 
