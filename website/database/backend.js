@@ -112,13 +112,13 @@ app.post('/newPoll', (req, res) => {
     res.send(pollData);
 });
 
-app.put('/updateResponseCount', (req, res) => {
+app.post('/updateResponseCount', (req, res) => {
     const pollID = req.body['pollID'];
     const responseID = req.body['selectedOption'];
     
     console.log(pollID);
     console.log(responseID);
-    
+
 
     // Update the response count for the specified response in the 'responses' table
     db.run('UPDATE responses SET count = count + 1 WHERE poll_id = ? AND id = ?', [pollID, responseID], (err) => {
@@ -129,6 +129,9 @@ app.put('/updateResponseCount', (req, res) => {
 
         res.status(200).send('Response count updated successfully');
     });
+
+    const responseData = {pollID, responseID};
+    res.send(responseData);
 });
 
 app.get('/polls', (req, res) => {

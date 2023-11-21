@@ -3,14 +3,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import './App.css';
 import Contact from './Contact';
-import Signup from './Signup';
+import Signup from './signup';
 import NewPoll from './newpoll';
-import Login from './Login';
+import Login from './login';
 import ViewPoll from './viewpoll'
 import Donate from './Donate';
 import Viewanswers from './viewanswers';
-import Credits from './Creditsbar';
-import SearchButtonWithInput from './Button';
+// import Credits from './Creditsbar';
+// import SearchButtonWithInput from './Button';
 
 
 function App() {
@@ -108,7 +108,7 @@ function Home() {
           </Link>
           <Link to="/">
             <button className={'button-style'}>
-              <SearchButtonWithInput />
+              {/* <SearchButtonWithInput /> */}
             </button>
           </Link>
         </h2>
@@ -117,7 +117,7 @@ function Home() {
           width="450px"
           height="650px"
         />
-        <Credits/>
+        {/* <Credits/> */}
       </div>
 
   );
