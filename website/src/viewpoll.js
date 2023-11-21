@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 function ViewPoll () {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // State to store poll data
   const [pollData, setPollData] = useState(null);
@@ -18,12 +19,24 @@ function ViewPoll () {
   // State to track the selected option
   const [selectedOption, setSelectedOption] = useState(null);
 
-  // Four-digit pollID to fetch the specific poll
-  const pollID = 'asdf'; // Replace with the actual pollID or get it dynamically
-  // Redirect to the specified poll
+
+  const [pollLinkVisible, setLinkVisible] = useState(false); // State variable to track link visibility
+
+  const { pollID } = useParams();
   useEffect(() => {
-    navigate(`/viewpoll/${pollID}`);
-  }, [pollID, navigate]);
+    // Now 'code' contains the value from the URL, do something with it
+    console.log('Code from URL:', pollID);
+
+    // Fetch additional data or perform other actions based on the code
+  }, [pollID]);
+  
+  // Four-digit pollID to fetch the specific poll
+  // const pollID = 'asdf'; // Replace with the actual pollID or get it dynamically
+  
+  // // Redirect to the specified poll
+  // useEffect(() => {
+  //   navigate(`/viewpoll/${pollID}`);
+  // }, [pollID, navigate]);
 
   // Fetch poll data when the component mounts
   useEffect(() => {
@@ -101,13 +114,13 @@ function ViewPoll () {
     console.log('Selected Option:', selectedOption);
   }, [selectedOption]);
   
+  const navigate = useNavigate();
+
   // Function to send the selected option to the server
-  const sendOptionSelected = (selectedOption) => {
+  const sendOptionSelected = () => {
+    const optionData = {pollID, selectedOption};
     // Make an HTTP POST request to update the count in the database
-    Axios.put('http://localhost:3001/updateResponseCount', {
-      poll_id: pollID, // Assuming pollID is the poll ID
-      response_id: selectedOption,
-    })
+    Axios.post('http://localhost:3001/updateResponseCount', optionData)
       .then((response) => {
         console.log('Response from server:', response.data);
         // Handle success if needed
@@ -123,6 +136,9 @@ function ViewPoll () {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log(pollID);
+    console.log(selectedOption);
+
     // Check if an option is selected
     if (selectedOption == null) {
       // If no option is selected, display an error message or take appropriate action
@@ -131,6 +147,7 @@ function ViewPoll () {
     }
 
     sendOptionSelected();
+    navigate({pathname: `/viewanswers/${pollID}`});
   };
 
   // Your component UI goes here
@@ -159,6 +176,7 @@ function ViewPoll () {
           </form>
         </>
       )}
+
     </div>
   );
 }

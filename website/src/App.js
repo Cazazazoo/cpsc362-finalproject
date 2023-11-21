@@ -3,14 +3,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import './App.css';
 import Contact from './Contact';
-import Signup from './Signup';
+import Signup from './signup';
 import NewPoll from './newpoll';
-import Login from './Login';
+import Login from './login';
 import ViewPoll from './viewpoll'
 import Donate from './Donate';
 import Viewanswers from './viewanswers';
-import Credits from './Creditsbar';
-import SearchButtonWithInput from './Button';
+// import Credits from './Creditsbar';
+// import SearchButtonWithInput from './Button';
 
 
 function App() {
@@ -78,13 +78,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/findPoll" element={<Home />} />
-          <Route path="/newPoll" element={<NewPoll />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/viewpoll/:code" element={<ViewPoll />} />
+          <Route path="/newpoll" element={<NewPoll />} />
+          <Route path="/viewpoll/:pollID" element={<ViewPoll />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/viewanswers" element={<Viewanswers />}/>
+          <Route path="/viewanswers/:pollID" element={<Viewanswers />}/>
         </Routes>
     </BrowserRouter>
   );
@@ -108,7 +108,7 @@ function Home() {
           </Link>
           <Link to="/">
             <button className={'button-style'}>
-              <SearchButtonWithInput />
+              {/* <SearchButtonWithInput /> */}
             </button>
           </Link>
         </h2>
@@ -117,7 +117,7 @@ function Home() {
           width="450px"
           height="650px"
         />
-        <Credits/>
+        {/* <Credits/> */}
       </div>
 
   );

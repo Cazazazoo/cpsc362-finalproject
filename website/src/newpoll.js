@@ -1,65 +1,72 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './newpoll.css';
 
 function NewPoll () {
-    // Function to set the page title
-    const setPageTitle = (title) => {
-      document.title = title;
-    };
-    useEffect(() => {
-      setPageTitle("New Poll");
-    }, []);
+  // pollTopic and setTopic, which will hold the current state value and a function to update that state. useState(''): 
+  // This is a call to the useState hook. It initializes the state variable pollTopic with an initial value of an empty string (''). 
+  // The setTopic function is used to update the value of pollTopic.
+  const [pollTitle, setTitle] = useState('');
+  const [pollResponses, setResponses] = useState({});
+  const [pollID, setID] = useState('');
+  const [pollLinkVisible, setLinkVisible] = useState(false); // State variable to track link visibility
 
-    // Keep track of the number of options the poll being created has, default of 2
-    const [optionCount, setOptionCount] = useState(2);
-
-    // Add options to poll
-    const handleAddOption = () => { 
-      // Maximum of 6 options     
-      if (optionCount < 6) {
-        setOptionCount(optionCount + 1);
-      } else {
-        alert("You've reached the maximum number of options (6).");
-      }
-    };
-
-    // Remove options from poll
-    const handleRemoveOption = (e) => {
-      // Only allow removal when there are more than 2 options
-      if (optionCount > 2) {
-        setOptionCount(optionCount - 1);
-      }
-    };
+  // Function to set the page title
+  const setPageTitle = (title) => {
+    document.title = title;
+  };
+  useEffect(() => {
+    setPageTitle("New Poll");
+  }, []);
     
-    // pollTopic and setTopic, which will hold the current state value and a function to update that state. useState(''): 
-    // This is a call to the useState hook. It initializes the state variable pollTopic with an initial value of an empty string (''). 
-    // The setTopic function is used to update the value of pollTopic.
-    const [pollTitle, setTitle] = useState('');
-    const [pollResponses, setResponses] = useState({});
-    const [pollID, setID] = useState('');
-    const [pollLinkVisible, setLinkVisible] = useState(false); // State variable to track link visibility
+  // get user input for the topic of the poll
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
 
-    // get user input for the topic of the poll
-    const handleTitleChange = (e) => {
-      setTitle(e.target.value);
-    };
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate({
+      pathname: `/viewpoll/${pollID}`,
+    });
+  };
 
-    const handlePollResponses = (e) => {
-      // Add the user input to the pollResponses object
-      setResponses({ ...pollResponses, [e.target.name]: e.target.value });
-    };
+  // Keep track of the number of options the poll being created has, default of 2
+  const [optionCount, setOptionCount] = useState(2);
 
-    const createPollID = () => {
-      // Generate a random string of 4 alphabetical characters
-      // Code taken from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-      var s = "abcdefghijklmnopqrstuvwxyz";
-      const randomString = Array(4).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-      setID(randomString); // Update pollID state variable
-      return randomString;
-    };
+  // Add options to poll
+  const handleAddOption = () => { 
+    // Maximum of 6 options     
+    if (optionCount < 6) {
+      setOptionCount(optionCount + 1);
+    } else {
+      alert("You've reached the maximum number of options (6).");
+    }
+  };
+
+  // Remove options from poll
+  const handleRemoveOption = (e) => {
+    // Only allow removal when there are more than 2 options
+    if (optionCount > 2) {
+      setOptionCount(optionCount - 1);
+    }
+  };
+
+  const handlePollResponses = (e) => {
+    // Add the user input to the pollResponses object
+    setResponses({ ...pollResponses, [e.target.name]: e.target.value });
+  };
+
+  const createPollID = () => {
+    // Generate a random string of 4 alphabetical characters
+    // Code taken from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+    var s = "abcdefghijklmnopqrstuvwxyz";
+    const randomString = Array(4).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+    setID(randomString); // Update pollID state variable
+    return randomString;
+  };
 
   const sendPollData = () => {
     const pollID = createPollID();
@@ -78,12 +85,12 @@ function NewPoll () {
       });
   };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log(pollTitle);
-      console.log(pollResponses);
-      sendPollData();
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(pollTitle);
+    console.log(pollResponses);
+    sendPollData();
+  };
 
   return (
     <div className='new-poll-container'>
@@ -137,9 +144,7 @@ function NewPoll () {
 
       {/* Hidden div to display the link */}
       {pollLinkVisible && (
-        <div className="poll-link">
-          <a href={`viewpoll/${pollID}`}>http://localhost:3000/viewpoll/{pollID}</a>
-        </div>
+        <button onClick={handleNavigate}>Go to poll</button>
       )}
     </div>
   );
