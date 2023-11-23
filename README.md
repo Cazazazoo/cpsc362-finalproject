@@ -1,6 +1,12 @@
 CPSC 362 Final Project
 Names: Trung Nguyen, Evan Ng, Connie Zhu, Nick Sabater
 
+Poll.io is a website enabling users to create polls and share them with friends, family, and the public. Accessible through a 4-letter code, users can participate in and view polls.
+
+Built using HTML, CSS, JavaScript, React.js, Node.js, and SQLite3.
+
+Before running the application, please execute `npm install` in both the "website" and "database" folders to download any packages and dependencies. Afterwards, execute `npm start` in the "website" folder to start the website and execute `node backend.js` in a different terminal in the "database" folder to run our database.
+
 # P5: Final Project Submission 11/28/23
 
 1. Activity Diagram - 5 marks
@@ -15,24 +21,6 @@ Names: Trung Nguyen, Evan Ng, Connie Zhu, Nick Sabater
 ## Slides
 
 **Slides(can include):** Introduction, Group Members, Table of contents, Problem statement, Objective, Product Features, Product Backlog, Sprint Backlog, User Stories, User Interface, Software Requirements, Tasks Performed, Functional & Non-Functional Requirements, Goals, Scrum Meeting screenshots, Challenges Faced, Conclusion, Future Work
-
-# P1: Group Project Topic Selection Report 10/08/23
-
-**Topic Selection Report(1-2 pages):**
-- Team Name
-- Name of the Software
-- Why did the team decide on this topic
-- Short description of the software
-- Technology Stack(if decided)
-- List of Group Members with CWID and emails
-- Roles of the team members
-
-# Other Due Dates
-
-- P2: First Group Project Progress Report **10/22/23**
-- P3: Second Group Project Progress Report **11/5/23**
-- P4: Third Group Project Progress Report **11/19/23**
-
 
 # Getting Started with Create React App
 
