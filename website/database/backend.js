@@ -82,16 +82,18 @@ app.post('/login', (req, res) => {
     });
 });    
 
+app.post('/checkPollID', (req, res) => {
+    const pollID = req.body['pollID'];
+    // Check if the pollID already exists in the 'polls' table
+    db.get('SELECT * FROM polls WHERE id = ?', [pollID], (err, row) => {
+        row ? res.send(true) : res.send(false);
+    });
+});
+
 app.post('/newPoll', (req, res) => {
     const id = req.body['pollID'];
     const title = req.body['pollTitle'];
     const responses = req.body['pollResponses'];
-    
-    console.log(id);
-    console.log(title);
-    for (const response in responses) {
-        console.log(responses[response]);
-    }
 
     db.run('INSERT INTO polls (id, title, owner) VALUES (?, ?, ?)', [id, title, 1], (err) => {
         if (err) {
@@ -146,22 +148,6 @@ app.get('/resp', (req, res) => {
         res.send(rows);
     });
 });
-
-// // trying something CZ
-// // Modify the /polls endpoint to accept a code parameter
-// app.get('/polls/:id', (req, res) => {
-//     const id = req.params.id;
-    
-//     db.all('SELECT * FROM polls WHERE id = ?', [code], (err, rows) => {
-//         if (err) {
-//             console.error(err);
-//             res.status(500).send('Internal Server Error');
-//             return;
-//         }
-
-//         res.send(rows);
-//     });
-// });
 
 // Start the server
 app.listen(port, () => {
