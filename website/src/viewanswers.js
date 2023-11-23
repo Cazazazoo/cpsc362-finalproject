@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function ViewAnswers() {
   // State to store poll data
   const [polls, setPolls] = useState([]);
   // State to store response data
   const [responses, setResponses] = useState([]);
-  // State to store the searched poll ID
-  const [searchedPollId, setSearchedPollId] = useState('');
+  // // State to store the searched poll ID
+  // const [searchedPollId, setSearchedPollId] = useState('');
   // State to store filtered poll titles
   const [filteredTitles, setFilteredTitles] = useState([]);
   // State to store filtered responses
@@ -35,20 +36,21 @@ function ViewAnswers() {
       });
   }, []);
 
+  const { pollID } = useParams();
   // Handle changes in the search input
-  const handleSearchPollIdChange = (e) => {
-    setSearchedPollId(e.target.value);
-  };
+  // const handleSearchPollIdChange = (e) => {
+  //   setSearchedPollId(e.target.value);
+  // };
 
   // Filter and update titles and responses based on the searched poll ID
   useEffect(() => {
-    if (searchedPollId) {
+    if (pollID) {
       // Filter polls based on the searched poll ID
-      const filteredPolls = polls.filter(poll => poll.id === searchedPollId);
+      const filteredPolls = polls.filter(poll => poll.id === pollID);
 
       if (filteredPolls.length > 0) {
         // Filter responses based on the searched poll ID
-        const associatedResponses = responses.filter(response => response.poll_id === searchedPollId);
+        const associatedResponses = responses.filter(response => response.poll_id === pollID);
         //total count of responses
         const totalCount = associatedResponses.reduce((acc,response)=> acc +response.count, 0)
 
@@ -67,21 +69,21 @@ function ViewAnswers() {
       setFilteredTitles([]);
       setFilteredResponses([]);
     }
-  }, [searchedPollId, polls, responses]);
+  }, [pollID, polls, responses]);
 
   // Render the component
   return (
     <div className='view-answer-container'>
       <h1>Poll answers</h1>
 
-      {/* Input for entering the poll ID to search */}
+      {/* Input for entering the poll ID to search
       <input
         type="text"
-        value={searchedPollId}
+        value={pollID}
         onChange={handleSearchPollIdChange}
         placeholder="Enter Poll ID to search"
         style={{ width: '300px', height: '40px', fontSize: '25px' }}
-      />
+      /> */}
 
       {/* Display filtered titles and responses with counts */}
       <div className='view-id-container'>
