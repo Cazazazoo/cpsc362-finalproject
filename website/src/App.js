@@ -57,11 +57,6 @@ function App() {
               Contact
             </a>
           </li>
-          <li className='nav-item'>
-            <a href="/viewanswers" className='nav-links'>
-              View answers
-            </a>
-          </li>
         </u1>
       </div>
     </nav>
