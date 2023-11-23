@@ -127,7 +127,7 @@ app.post('/updateResponseCount', (req, res) => {
         return res.status(500).send('Internal server error');
         }
 
-        res.status(200).send('Response count updated successfully');
+        // res.status(200).send('Response count updated successfully');
     });
 
     const responseData = {pollID, responseID};

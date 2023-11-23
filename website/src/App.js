@@ -53,11 +53,6 @@ function App() {
             </a>
           </li>
           <li className='nav-item'>
-            <a href="/viewpoll" className='nav-links'>
-              View Poll
-            </a>
-          </li>
-          <li className='nav-item'>
             <a href="/donate" className='nav-donate'>
               Buy us an English Tea!
             </a>
