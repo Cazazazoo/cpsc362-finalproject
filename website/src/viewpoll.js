@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 function ViewPoll () {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // State to store poll data
   const [pollData, setPollData] = useState(null);
@@ -142,6 +141,7 @@ function ViewPoll () {
     }
 
     sendOptionSelected();
+    navigate({pathname: `/viewanswers/${pollID}`});
   };
 
   // Your component UI goes here
@@ -170,6 +170,7 @@ function ViewPoll () {
           </form>
         </>
       )}
+
     </div>
   );
 }

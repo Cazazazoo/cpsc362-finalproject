@@ -1,5 +1,5 @@
 import React from 'react';
-// import Credits from './Creditsbar'
+import Credits from './Creditsbar'
 
 function Contact() {
   return (
@@ -8,7 +8,7 @@ function Contact() {
       <p>EvanNg21@csu.fullerton.edu</p>
       <p>nsabater2022@csu.fullerton.edu</p>
       <p>zhuconnie123@csu.fullerton.edu</p>
-      {/* <Credits/> */}
+      <Credits/>
     </div>
   );
 }
