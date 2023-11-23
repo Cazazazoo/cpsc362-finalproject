@@ -12,7 +12,8 @@ function NewPoll () {
   const [pollResponses, setResponses] = useState({});
   const [pollID, setID] = useState('');
   const [pollLinkVisible, setLinkVisible] = useState(false); // State variable to track link visibility
-
+  const POLLID_LENGTH = 4;
+  
   // Function to set the page title
   const setPageTitle = (title) => {
     document.title = title;
@@ -59,12 +60,27 @@ function NewPoll () {
     setResponses({ ...pollResponses, [e.target.name]: e.target.value });
   };
 
+  const checkPollID = (pollID) => {
+    // Make an HTTP POST request to check if the pollID already exists in the database
+    Axios.post('http://localhost:3001/checkPollID', { pollID })
+      .then((response) => {
+        if (response.data) {
+          console.log('Poll ID already exists in database.');
+          createPollID();
+        } else {
+          console.log('New Poll ID.');
+          setID(pollID);
+        }
+      })
+  };
+
   const createPollID = () => {
     // Generate a random string of 4 alphabetical characters
     // Code taken from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
     var s = "abcdefghijklmnopqrstuvwxyz";
-    const randomString = Array(4).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-    setID(randomString); // Update pollID state variable
+    const randomString = Array(POLLID_LENGTH).join().split(',').map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+    console.log(randomString);
+    checkPollID(randomString);
     return randomString;
   };
 
