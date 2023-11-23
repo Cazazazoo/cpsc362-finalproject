@@ -9,8 +9,8 @@ import Login from './login';
 import ViewPoll from './viewpoll'
 import Donate from './Donate';
 import Viewanswers from './viewanswers';
-// import Credits from './Creditsbar';
-// import SearchButtonWithInput from './Button';
+import Credits from './Creditsbar';
+import SearchButtonWithInput from './Button';
 
 
 function App() {
@@ -38,11 +38,6 @@ function App() {
             </a>
           </li>
           <li className='nav-item'>
-            <a href='/' className='nav-links'>
-              Find Poll
-            </a>
-          </li>
-          <li className='nav-item'>
             <a href="/signup" className='nav-links'>
               Sign up 
             </a>
@@ -50,11 +45,6 @@ function App() {
           <li className='nav-item'>
             <a href="/login" className='nav-links'>
               Log in
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a href="/viewpoll" className='nav-links'>
-              View Poll
             </a>
           </li>
           <li className='nav-item'>
@@ -77,7 +67,6 @@ function App() {
     </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/findPoll" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/newpoll" element={<NewPoll />} />
@@ -108,7 +97,7 @@ function Home() {
           </Link>
           <Link to="/">
             <button className={'button-style'}>
-              {/* <SearchButtonWithInput /> */}
+              <SearchButtonWithInput />
             </button>
           </Link>
         </h2>
@@ -117,7 +106,7 @@ function Home() {
           width="450px"
           height="650px"
         />
-        {/* <Credits/> */}
+        <Credits/>
       </div>
 
   );
