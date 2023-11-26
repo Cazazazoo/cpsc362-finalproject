@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import './viewpoll.css';
 
 
 function ViewPoll () {
@@ -24,6 +25,14 @@ function ViewPoll () {
     console.log('Code from URL:', pollID);
 
     // Fetch additional data or perform other actions based on the code
+  }, [pollID]);
+
+  // Function to set the page title
+  const setPageTitle = (title) => {
+    document.title = title;
+  };
+  useEffect(() => {
+    setPageTitle(`View Poll - ${pollID}`);
   }, [pollID]);
   
   // Four-digit pollID to fetch the specific poll
@@ -166,7 +175,7 @@ function ViewPoll () {
                 </label>
               </div>
             ))}
-            <button type='submit'>Submit</button>
+            <button className="vote-button" type='submit'>Submit</button>
           </form>
         </>
       )}

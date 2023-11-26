@@ -1,0 +1,38 @@
+.vote-button {
+    background-color: #3e3b3b;
+    color: white;
+    height: 45px;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: medium;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/*.option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.view-poll-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.view-poll-container h1 {
+    text-align: center;
+}
+
+.view-poll-container .option {
+    text-align: left; /* Keep options left-justified */
+    margin-bottom: 10px; /* Add some bottom margin for spacing between options */
+}
+
+/* .vote-button {
+    margin-top: 20px; /* Add top margin to the button for spacing }*/

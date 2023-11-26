@@ -38,16 +38,6 @@ function App() {
             </a>
           </li>
           <li className='nav-item'>
-            <a href="/signup" className='nav-links'>
-              Sign up 
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a href="/login" className='nav-links'>
-              Log in
-            </a>
-          </li>
-          <li className='nav-item'>
             <a href="/donate" className='nav-donate'>
               Buy us an English Tea!
             </a>
