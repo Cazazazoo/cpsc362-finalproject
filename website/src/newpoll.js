@@ -160,7 +160,7 @@ function NewPoll () {
 
       {/* Hidden div to display the link */}
       {pollLinkVisible && (
-        <button onClick={handleNavigate}>Go to poll</button>
+        <button className="view-poll-link" onClick={handleNavigate}>Go to poll</button>
       )}
     </div>
   );

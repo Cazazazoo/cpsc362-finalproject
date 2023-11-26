@@ -1,4 +1,4 @@
-CPSC 362 Final Project
+# CPSC 362 Final Project: Poll.io
 Names: Trung Nguyen, Evan Ng, Connie Zhu, Nick Sabater
 
 Poll.io is a website enabling users to create polls and share them with friends, family, and the public. Accessible through a 4-letter code, users can participate in and view polls.
