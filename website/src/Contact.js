@@ -1,5 +1,5 @@
 import React from 'react';
-import Credits from './Creditsbar'
+import Credits from './creditsbar'
 
 function Contact() {
   return (
