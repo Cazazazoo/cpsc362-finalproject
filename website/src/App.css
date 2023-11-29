@@ -22,16 +22,6 @@
   color: white; /* Change the text color to your preferred color */
 }
 
-.home-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #282424; /* Change the background color to your preferred color */
-  color: white; /* Change the text color to your preferred color */
-}
-
 .signup-container{
   display: flex;
   flex-direction: column;
@@ -44,7 +34,7 @@
 }
 
 .navbar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, #14639a 100%);
   height: 120px;
   display: flex;
   justify-content: space-around;
@@ -53,6 +43,16 @@
   position: sticky;
   top: 0;
   z-index: 999;
+}
+
+.home-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282424; /* Change the background color to your preferred color */
+  color: white; /* Change the text color to your preferred color */
 }
   
 .navbar-container {
@@ -172,6 +172,7 @@
   background-color:#282424; /* Change the background color to your preferred color */
   color: white; /* Change the text color to your preferred color */
 }
+
 .view-poll-container{
   display: flex;
   flex-direction: column;
@@ -229,8 +230,9 @@
 
 .button-style{
   padding:15px;
-  background-color: #fff;
+  background-color: #14639a;
   border:none;
   border-radius: 5px;
   cursor: pointer;
+  color: white;
 }
