@@ -9,9 +9,8 @@ import Login from './login';
 import ViewPoll from './viewpoll'
 import Donate from './Donate';
 import Viewanswers from './viewanswers';
-import Credits from './Creditsbar';
-import SearchButtonWithInput from './Button';
-
+import Credits from './creditsbar';
+import SearchBar from './pollidfinder';
 
 function App() {
   
@@ -80,11 +79,7 @@ function Home() {
               Create a Poll
             </button>
           </Link>
-          <Link to="/">
-            <button className={'button-style'}>
-              <SearchButtonWithInput />
-            </button>
-          </Link>
+          <SearchBar/>
         </h2>
         <img src="https://i.imgflip.com/85j4a3.jpg" alt='img'
           align="center"
