@@ -136,16 +136,23 @@ app.post('/updateResponseCount', (req, res) => {
     res.send(responseData);
 });
 
-app.get('/polls', (req, res) => {
-    db.all('SELECT * FROM polls', (err, rows) => {
-        res.send(rows);
+app.post('/getpoll', (req, res) => {
+    const pollID = req.body['pollID'];
+    db.get('SELECT id, title FROM polls WHERE id = ?', [pollID], (err, row) => {
+        if (row) {
+            console.log(row);
+            res.send(row);
+        }
     });
-    
 });
 
-app.get('/resp', (req, res) => {
-    db.all('SELECT * FROM responses', (err, rows) => {
-        res.send(rows);
+app.post('/getresponses', (req, res) => {
+    const pollID = req.body['pollID'];
+    db.all('SELECT response, count FROM responses WHERE poll_id = ?', [pollID], (err, rows) => {
+        if (rows) {
+            console.log(rows);
+            res.send(rows);
+        }
     });
 });
 

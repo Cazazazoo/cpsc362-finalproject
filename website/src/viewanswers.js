@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
 function ViewAnswers() {
+  ChartJS.register(ArcElement, Tooltip, Legend);
+  ChartJS.defaults.font.size = 25;
+  const { pollID } = useParams();
   // State to store poll data
-  const [polls, setPolls] = useState([]);
+  const [pollInfo, setPollInfo] = useState({});
   // State to store response data
   const [responses, setResponses] = useState([]);
-  // // State to store the searched poll ID
-  // const [searchedPollId, setSearchedPollId] = useState('');
-  // State to store filtered poll titles
-  const [filteredTitles, setFilteredTitles] = useState([]);
-  // State to store filtered responses
-  const [filteredResponses, setFilteredResponses] = useState([]);
 
   // Fetch poll data when the component mounts
   useEffect(() => {
-    Axios.get('http://localhost:3001/polls')
+    Axios.post(`http://localhost:3001/getpoll`, { pollID })
       .then(response => {
-        setPolls(response.data);
+        console.log(response.data);
+        setPollInfo(response.data);
+        
       })
       .catch(error => {
         console.error('Error fetching poll data:', error);
@@ -27,79 +28,44 @@ function ViewAnswers() {
 
   // Fetch response data when the component mounts
   useEffect(() => {
-    Axios.get('http://localhost:3001/resp')
+    Axios.post('http://localhost:3001/getresponses', { pollID })
       .then(response => {
+        console.log(response.data);
         setResponses(response.data);
       })
       .catch(error => {
         console.error('Error fetching responses:', error);
       });
   }, []);
-
-  const { pollID } = useParams();
-  // Handle changes in the search input
-  // const handleSearchPollIdChange = (e) => {
-  //   setSearchedPollId(e.target.value);
-  // };
-
-  // Filter and update titles and responses based on the searched poll ID
-  useEffect(() => {
-    if (pollID) {
-      // Filter polls based on the searched poll ID
-      const filteredPolls = polls.filter(poll => poll.id === pollID);
-
-      if (filteredPolls.length > 0) {
-        // Filter responses based on the searched poll ID
-        const associatedResponses = responses.filter(response => response.poll_id === pollID);
-        //total count of responses
-        const totalCount = associatedResponses.reduce((acc,response)=> acc +response.count, 0)
-
-        // Set filtered titles and responses with counts
-        setFilteredTitles([filteredPolls[0].title]);
-        setFilteredResponses(
-          associatedResponses.map(response => `${response.response} (Count: ${response.count}), (Percentage: ${(response.count/totalCount * 100) .toFixed(2)}%)`)
-        );
-      } else {
-        // If no matching poll is found, clear filtered titles and responses
-        setFilteredTitles([]);
-        setFilteredResponses([]);
-      }
-    } else {
-      // If no poll ID is entered, clear filtered titles and responses
-      setFilteredTitles([]);
-      setFilteredResponses([]);
-    }
-  }, [pollID, polls, responses]);
+  
+  const chartData = {
+    labels: responses.map(response => response['response']),
+    datasets: [
+      {
+        label: 'Number of Votes',
+        data: responses.map(response => response['count']),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.7)',
+          'rgba(54, 162, 235, 0.7)',
+          'rgba(255, 206, 86, 0.7)',
+          'rgba(75, 192, 192, 0.7)',
+          'rgba(153, 102, 255, 0.7)',
+          'rgba(255, 159, 64, 0.7)',
+        ],
+        borderColor: [
+          '#14639a'
+        ],
+      },
+    ],
+  };
 
   // Render the component
   return (
     <div className='view-answer-container'>
       <h1>Poll answers</h1>
-
-      {/* Input for entering the poll ID to search
-      <input
-        type="text"
-        value={pollID}
-        onChange={handleSearchPollIdChange}
-        placeholder="Enter Poll ID to search"
-        style={{ width: '300px', height: '40px', fontSize: '25px' }}
-      /> */}
-
-      {/* Display filtered titles and responses with counts */}
-      <div className='view-id-container'>
-        <ul>
-          <h2 style={{ fontSize: '30px' }}>Title</h2>
-          {filteredTitles.map((title, index) => (
-            <p key={index}>{title}</p>
-          ))}
-        </ul>
-
-        <ul>
-          <h3 style={{ fontSize: '30px' }}>Responses</h3>
-          {filteredResponses.map((respo, index) => (
-            <p key={index}>{respo}</p>
-          ))}
-        </ul>
+      <h2>{pollInfo['title']}</h2>
+      <div className='pie-chart-container' style={{ display: 'flex', justifyContent: 'center'}}>
+        <Pie data={chartData} />
       </div>
     </div>
   );
