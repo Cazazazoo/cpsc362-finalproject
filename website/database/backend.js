@@ -136,6 +136,18 @@ app.post('/updateResponseCount', (req, res) => {
     res.send(responseData);
 });
 
+app.get('/polls', (req, res) => {
+    db.all('SELECT * FROM polls', (err, rows) => {
+        res.send(rows);
+    })
+});
+
+app.get('/resp', (req, res) => {
+    db.all('SELECT * FROM responses', (err, rows) => {
+        res.send(rows);
+    })
+});
+
 app.post('/getpoll', (req, res) => {
     const pollID = req.body['pollID'];
     db.get('SELECT id, title FROM polls WHERE id = ?', [pollID], (err, row) => {
