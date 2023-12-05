@@ -59,13 +59,21 @@ function ViewAnswers() {
     ],
   };
 
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: true, // This allows you to control the aspect ratio
+    aspectRatio: 3, // You can adjust this value to control the aspect ratio
+  
+    // Add other options as needed
+  };
+
   // Render the component
   return (
     <div className='view-answer-container'>
       <h1>Poll answers</h1>
       <h2>{pollInfo['title']}</h2>
       <div className='pie-chart-container' style={{ display: 'flex', justifyContent: 'center'}}>
-        <Pie data={chartData} />
+        <Pie data={chartData} options={chartOptions} />
       </div>
     </div>
   );
