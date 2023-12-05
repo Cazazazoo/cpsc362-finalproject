@@ -8,13 +8,13 @@
     font-size: medium;
     cursor: pointer;
     margin-top: 20px;
-}
+    /* pro: this is in the middle, con: it's fixed
+    position:fixed;
+    top: 650px;
+    bottom: auto;
+    right: 650px; */
 
-/*.option {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
+}
 
 .view-poll-container {
     display: flex;
@@ -32,9 +32,6 @@
     text-align: left; /* Keep options left-justified */
     margin-bottom: 10px; /* Add some bottom margin for spacing between options */
 }
-
-/* .vote-button {
-    margin-top: 20px; /* Add top margin to the button for spacing }*/
 
 .copy-link-button,
 .copy-pollid-button {
@@ -54,4 +51,57 @@
 
 .copy-link-button {
     margin-bottom: 55px; /* Adjust the margin to separate the buttons */
+}
+
+.option {
+    background: rgba(127, 127, 127, 0.504);
+    padding: 0.5em 0.5em 0.5em 3em;
+    margin: 0.5em 0;
+    border-radius: 5px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.option:hover{
+    background: rgb(127, 127, 127);
+}
+
+.option input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.option label::before, label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+/* controls size of white */
+.option label::before {
+    background: #fff;
+    border: 1px #ccc solid;
+    width: 1.5em;
+    height: 1.5em;
+    left: 0.5em;
+}
+
+.option label::after {
+    background: none;
+    width: 1em;
+    height: 1em;
+    left: 0.80em;
+    transition: 0.2s;
+}
+
+.option input:checked +label:after {
+    background: #14639a;
 }

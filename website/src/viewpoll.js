@@ -173,7 +173,6 @@ function ViewPoll () {
             {/* Map through filtered responses and create radio buttons for each */}
             {filteredResponses.map((response) => (
               <div key={response.id} className='option'>
-                <label>
                   <input
                     type='radio'
                     name='pollOption'
@@ -181,8 +180,7 @@ function ViewPoll () {
                     onChange={() => handleOptionSelect(response.id)}
                     checked={selectedOption === response.id}
                   />
-                  {response.response}
-                </label>
+                  <label>{response.response}</label>
               </div>
             ))}
             <button className="vote-button" type='submit'>Submit</button>
@@ -191,7 +189,6 @@ function ViewPoll () {
           <button onClick={copyPollIDToClipboard} className='copy-pollid-button'>Copy Poll ID</button>
         </>
       )}
-
     </div>
   );
 }
