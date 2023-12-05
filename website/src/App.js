@@ -20,7 +20,7 @@ function App() {
     <nav className='navbar'>
       <div className='navbar-container'>
         <a href="/" className='navbar-logo'>
-          Polls.io <i className='fab fa-typo3' />
+          Poll.io <i className='fab fa-typo3' />
         </a>
         <div className='menu-icon'>
 
@@ -71,7 +71,7 @@ function Home() {
 
       <div className="home-container">
       <h1>
-        Welcome to Polls.io
+        Welcome to Poll.io
       </h1>
         <h2 className='button-container'>
           <Link to="/newpoll">
