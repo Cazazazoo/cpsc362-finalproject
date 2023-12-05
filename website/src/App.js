@@ -74,7 +74,7 @@ function Home() {
         Welcome to Polls.io
       </h1>
         <h2 className='button-container'>
-          <Link to="/newPoll">
+          <Link to="/newpoll">
             <button className={'button-style'}>
               Create a Poll
             </button>
