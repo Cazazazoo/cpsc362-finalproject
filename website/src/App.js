@@ -32,7 +32,7 @@ function App() {
             </a>
           </li>
           <li className='nav-item'>
-            <a href='/newPoll' className='nav-links'>
+            <a href='/newpoll' className='nav-links'>
               New Poll 
             </a>
           </li>

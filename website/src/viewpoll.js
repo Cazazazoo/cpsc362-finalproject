@@ -5,6 +5,7 @@ import './viewpoll.css';
 
 
 function ViewPoll () {
+  // navigating to answers page
   const navigate = useNavigate();
 
   // State to store poll data
@@ -34,14 +35,6 @@ function ViewPoll () {
   useEffect(() => {
     setPageTitle(`View Poll - ${pollID}`);
   }, [pollID]);
-  
-  // Four-digit pollID to fetch the specific poll
-  // const pollID = 'asdf'; // Replace with the actual pollID or get it dynamically
-  
-  // // Redirect to the specified poll
-  // useEffect(() => {
-  //   navigate(`/viewpoll/${pollID}`);
-  // }, [pollID, navigate]);
 
   // Fetch poll data when the component mounts
   useEffect(() => {
@@ -64,16 +57,6 @@ function ViewPoll () {
         console.error('Error fetching responses:', error);
       });
   }, []);
-
-  // // UseEffect to fetch poll data from the server based on the pollID
-  // useEffect(() => {
-  //   fetch(`http://localhost:3001/polls/${pollID}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setPollData(data);
-  //     })
-  //     .catch((error) => console.error('Error fetching data:', error));
-  // }, [pollID]);
 
   // Filter and update titles and responses based on the searched poll ID
   useEffect(() => {
@@ -113,7 +96,6 @@ function ViewPoll () {
     // Update the state
     setSelectedOption(responseID);
   };
-
   // useEffect to log the selected option after the state is updated
   useEffect(() => {
     console.log('Selected Option:', selectedOption);
@@ -153,7 +135,35 @@ function ViewPoll () {
     navigate({pathname: `/viewanswers/${pollID}`});
   };
 
-  // Your component UI goes here
+  const copyLinkToClipboard = () => {
+    const currentURL = window.location.href;
+
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(currentURL)
+      .then(() => {
+        // Show a pop-up indicating successful copy
+        window.alert('Link Copied!');
+      })
+      .catch((error) => {
+        // Handle errors, e.g., browser doesn't support clipboard API
+        console.error('Error copying to clipboard:', error);
+      });
+  };
+
+  const copyPollIDToClipboard = () => {
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(pollID)
+      .then(() => {
+        // Show a pop-up indicating successful copy
+        window.alert('poll ID Copied!');
+      })
+      .catch((error) => {
+        // Handle errors, e.g., browser doesn't support clipboard API
+        console.error('Error copying to clipboard:', error);
+      });
+  };
+
+  // component UI goes here
   return (
     <div className='view-poll-container'>
       {filteredTitle && (
@@ -177,6 +187,8 @@ function ViewPoll () {
             ))}
             <button className="vote-button" type='submit'>Submit</button>
           </form>
+          <button onClick={copyLinkToClipboard} className='copy-link-button'>Copy Link</button>
+          <button onClick={copyPollIDToClipboard} className='copy-pollid-button'>Copy Poll ID</button>
         </>
       )}
 

@@ -9,19 +9,19 @@ function Donate(){
                 width='600px'
             />
             <h1>
-                Be sure to paypal: 
+                Be sure to paypal (or make us laugh): 
             </h1>
             <p>
-                This guy
+                Nick
             </p>
             <p>
-                This guy
+                Trung
             </p>
             <p>
-                This guy
+                Evan
             </p>
             <p>
-                And this guy especially lol
+                Connie
             </p>
             <Credits/>
         </div>
