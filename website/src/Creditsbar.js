@@ -5,7 +5,7 @@ function Credits(){
     return(
         <div className="credits-bar-container">
             <p className="credits-style">
-                © 2023 Polls.io. All rights reserved.
+                © 2023 Poll.io. All rights reserved.
             </p>
         </div>
     );
