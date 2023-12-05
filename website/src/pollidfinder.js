@@ -16,12 +16,12 @@ const SearchBar = () => {
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Input Poll ID..."
         value={pollID}
         onChange={(e) => setID(e.target.value)}
-        style={{ justifyself: 'right', padding: '10px', height: '38px', width: '100px', fontSize: '14px', marginLeft: '35%', marginRight: '5px' }}
+        style={{ justifyself: 'right', padding: '10px', height: '38px', width: '100px', fontSize: '14px', marginLeft: '35%', marginRight: '5px', marginBottom: '5px'}}
       />
-      <button onClick={handleSearch} style={{ padding: '10px', height: '40px', fontSize: '16px'}}>Search</button>
+      <button onClick={handleSearch} style={{ padding: '10px', height: '40px', fontSize: '16px', backgroundColor: '#14639a', color: 'white', border: 'none', borderRadius: '5px'}}>Search</button>
     </div>
   );
 };
